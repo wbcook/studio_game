@@ -23,6 +23,9 @@ class Player
   def name=(new_name)
     @name = new_name.capitalize
   end
+  def strong?
+    @health > 100
+  end
 end
 
 if __FILE__ == $0
