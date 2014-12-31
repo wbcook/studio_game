@@ -1,4 +1,3 @@
-# Test examples for our Player class.
 require_relative 'player'
 
 describe Player do
@@ -32,5 +31,23 @@ describe Player do
     
     @player.blam
     @player.health.should == @initial_health - 10
+  end
+  context "with a health greater than 100" do
+    before do
+      @player = Player.new("larry", 150)
+    end
+    
+    it "is strong" do
+      @player.should be_strong
+    end
+  end
+  context "with a health less than 100" do
+    before do
+      @player = Player.new("larry", 50)
+    end
+
+    it "is wimpy" do
+      @player.should_not be_strong
+    end
   end
 end
