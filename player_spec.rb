@@ -1,3 +1,6 @@
+# Run tests with rspec player_spec.rb --color
+# Run ALL _spec.rb tests in the directory with rspec . -- color
+# This tests the player class.
 require_relative 'player'
 
 describe Player do
