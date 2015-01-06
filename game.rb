@@ -11,11 +11,14 @@ class Game
   def add_player(player)
     @players.push(player)
   end
-  def play
+  def play(rounds)
     puts "There are #{@players.size} players in the game:"
     puts @players
-    @players.each do |player|
-      GameTurn.take_turn(player)
+    1.upto(rounds) do |round|
+      puts "\nRound: #{round}"
+      @players.each do |player|
+        GameTurn.take_turn(player)
+      end
     end
     puts @players
     puts "#{@title}".center(50, "*")

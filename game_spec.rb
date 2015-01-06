@@ -13,23 +13,24 @@ describe Game do
 
     @game.add_player(@player)
   end
-  it "should w00t the player when a high number is rolled" do
+  it "w00ts the player when a high number is rolled" do
     Die.any_instance.stub(:roll).and_return(5)
 
-    @game.play
-    @player.health.should == @initial_health + 15
+    @game.play(2)
+
+    @player.health.should == @initial_health + (15 * 2)
   end
   it "should do nothing to the player when a medium number is rolled" do
     Die.any_instance.stub(:roll).and_return(3)
 
-    @game.play
+    @game.play(2)
     @player.health.should == @initial_health
   end
   it "should blam the player when a low number is rolled" do
     Die.any_instance.stub(:roll).and_return(1)
 
-    @game.play
-    @player.health.should == @initial_health - 10
+    @game.play(2)
+    @player.health.should == @initial_health - (10 * 2)
   end
 
 end
