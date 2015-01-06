@@ -53,4 +53,17 @@ describe Player do
       @player.should_not be_strong
     end
   end
+  context "in a collection of players" do
+    before do
+      @player = Player.new("moe", 100)
+      @player = Player.new("larry", 200)
+      @player = Player.new("curly", 300)
+
+      @players = [@player1, @player2, @player3]
+    end
+    
+    it "is sorted by decreasing score" do
+      @players.sort.should == [@player3, @player2, @player1]
+    end
+  end
 end

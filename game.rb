@@ -23,4 +23,23 @@ class Game
     puts @players
     puts "#{@title}".center(50, "*")
   end
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.score})"
+  end
+  def print_stats
+    strong_players, whimpy_players = @players.partition { |player| player.strong? }
+    puts "\n#{title} Statistics:"
+    puts "\n#{strong_players.size} strong players:"
+    strong_players.each do |player|
+      print_name_and_health(player)
+    end
+    puts "\n#{whimpy_players.size} whimpy players:"
+    whimpy_players.each do |player|
+      print_name_and_health(player)
+    end
+    puts "\nLeaderboard: "
+    @players.sort.each do |player|
+      puts "#{player.name}".ljust(20, '.') + " #{player.score}"
+    end
+  end
 end

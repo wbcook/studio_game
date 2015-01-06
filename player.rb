@@ -6,6 +6,9 @@ class Player
   def initialize name, health=150
     @name, @health = name.capitalize, health
   end
+  def <=>(other)
+    other.score <=> score
+  end
   def to_s
     "I'm '#{@name}'!".ljust(20, '.') + " [Health: #{@health}] [Score: #{score}]"
   end
