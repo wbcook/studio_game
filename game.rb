@@ -2,15 +2,19 @@
 # using classes, also the methods: to_s, and initialize.
 require_relative 'player'
 require_relative 'game_turn'
+require_relative 'treasure_trove'
+
 class Game
   attr_reader :title
   def initialize(title)
     @title = title
     @players = []
   end
+
   def add_player(player)
     @players.push(player)
   end
+
   def play(rounds)
     puts "There are #{@players.size} players in the game:"
     puts @players
@@ -22,10 +26,17 @@ class Game
     end
     puts @players
     puts "#{@title}".center(50, "*")
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.size} treasures to be found:"
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
+    end
   end
+
   def print_name_and_health(player)
     puts "#{player.name} (#{player.score})"
   end
+
   def print_stats
     strong_players, whimpy_players = @players.partition { |player| player.strong? }
     puts "\n#{title} Statistics:"
@@ -41,5 +52,8 @@ class Game
     @players.sort.each do |player|
       puts "#{player.name}".ljust(20, '.') + " #{player.score}"
     end
+
   end
+
+
 end
