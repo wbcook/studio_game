@@ -34,7 +34,7 @@ class Game
   end
 
   def print_name_and_health(player)
-    puts "#{player.name} (#{player.score})"
+    puts "#{player.name} (#{player.health})"
   end
 
   def print_stats
@@ -51,6 +51,8 @@ class Game
     puts "\nLeaderboard: "
     @players.sort.each do |player|
       puts "#{player.name}".ljust(20, '.') + " #{player.score}"
+      puts "\n#{player.name}'s point totals:"
+      puts "#{player.points} grand total points"
     end
 
   end
