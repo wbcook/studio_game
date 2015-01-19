@@ -1,5 +1,6 @@
-# Encapsulating behaviors and states of larry, curly, and moe
-# using classes, also the methods: to_s, and initialize.
+###
+# Game class for studio game Ruby app.
+###
 require_relative 'player'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
@@ -63,6 +64,21 @@ class Game
     end
 
   end
+  
+  def load_players(from_file)
+    File.readlines(from_file).each do |line|
+      name, health = line.split(',')
+      player = Player.new(name, Integer(health))
+      add_player(player)
+    end
+  end
 
+   def save_high_scores(to_file="high_scores.txt")
+     File.open(to_file, "w") do |file|
+       @players.sort.each do |player|
+         file.puts "#{player.name},#{player.score}"
+       end
+     end
+   end
 
 end

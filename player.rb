@@ -1,5 +1,6 @@
-# Encapsulating behaviors and states of larry, curly, and moe
-# using classes, also the methods: to_s, and initialize.
+###
+# Player class for studio game Ruby app.
+###
 class Player
   attr_reader :health
   attr_accessor :name
